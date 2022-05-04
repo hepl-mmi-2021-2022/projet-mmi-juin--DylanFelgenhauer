@@ -9,6 +9,7 @@ export class Game {
     startAngle : number;
     endAngle : number;
     midLaneWidth : number;
+    playerOne : any;
 
     constructor() {
         this.canvas = document.getElementById('my-canvas') as HTMLCanvasElement;
@@ -19,10 +20,12 @@ export class Game {
         this.startAngle = settings.ball.startAngle;
         this.endAngle = settings.ball.endAngle;
         this.midLaneWidth = settings.midLane.width;
-        this.drawPlayerOne();
+        this.playerOne = this.drawPlayerOne();
         this.drawPlayerTwo();
         this.drawBall();
         this.drawMidLane();
+        this.mouseMove();
+        this.addEventListener();
     }
 
     drawPlayerOne(){
@@ -46,5 +49,15 @@ export class Game {
         this.ctx.fillStyle = 'white';
         this.ctx.arc(0,0,50,0,Math.PI*2);
     }
+    mouseMove(){
+        window.addEventListener('mousemove',(e)=>{
+            console.log("pageX :" ,e.pageX,
+                        "pageY :" ,e.pageY)
+        })
+    }
+    addEventListener(){
+
+    }
+
 
 }
