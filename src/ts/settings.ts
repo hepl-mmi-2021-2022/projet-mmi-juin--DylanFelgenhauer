@@ -14,6 +14,5 @@ export const settings ={
     },
     midLane:{
         width:2,
-
     }
 }

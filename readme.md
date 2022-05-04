@@ -12,10 +12,10 @@ Allez vous choisir de ridiculiser un ami ? Ou alors vous entrainer contre l'ordi
 
 ## TODO list
 
-- [ ] Configurer le projet
-- [ ] Creer le fond 
-- [ ] Créer le joueur 1
-- [ ] Créer le joueur 2
+- [x] Configurer le projet
+- [x] Creer le fond 
+- [x] Créer le joueur 1
+- [x] Créer le joueur 2
 - [ ] Créer la balle
 - [ ] Mouvement des joueurs
 - [ ] Systéme de 2 joueurs

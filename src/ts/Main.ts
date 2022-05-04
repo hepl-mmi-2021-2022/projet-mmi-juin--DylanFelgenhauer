@@ -1,14 +1,20 @@
 import {Canvas} from "./Canvas";
-import {Game} from "./Game";
+import {PlayerTwo} from "./PlayerTwo";
+import {PlayerOne} from "./PlayerOne";
+import {Ball} from "./Ball";
 
 
 class Main{
     canvas:Canvas;
-    game : Game;
+    playerTwo : PlayerTwo;
+    playerOne : PlayerOne;
+    ball: Ball;
 
     constructor() {
         this.canvas = new Canvas();
-        this.game = new Game();
+        this.playerTwo = new PlayerTwo();
+        this.playerOne = new PlayerOne();
+        this.ball = new Ball();
     }
 }
 new Main();
