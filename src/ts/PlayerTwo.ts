@@ -1,4 +1,5 @@
 import {settings} from "./settings";
+import {PlayerOne} from "./PlayerOne";
 
 export class PlayerTwo {
     canvas:HTMLCanvasElement;
@@ -19,4 +20,11 @@ export class PlayerTwo {
         this.ctx.fillRect(this.width,(this.canvas.height/2)-this.height*0.5, this.width,this.height);
         this.ctx.closePath();
     }
+
+/*    addEventListener(){
+        window.addEventListener("keypress",(e)=>{
+            if (e.key === "z"){
+            }
+        })
+    }*/
 }

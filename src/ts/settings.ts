@@ -11,6 +11,8 @@ export const settings ={
         radius : 5,
         startAngle : 0,
         endAngle: Math.PI*2,
+        speedX : 1,
+        speedY : 1,
     },
     midLane:{
         width:2,
