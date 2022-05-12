@@ -1,6 +1,4 @@
 import {Canvas} from "./Canvas";
-import {PlayerTwo} from "./PlayerTwo";
-import {PlayerOne} from "./PlayerOne";
 import {Ball} from "./Ball";
 import {Animate} from "./Animate";
 import {Score} from "./Score";

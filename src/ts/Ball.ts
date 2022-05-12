@@ -20,8 +20,6 @@ export class Ball{
         this.endAngle = settings.ball.endAngle;
         this.speedY= settings.ball.speedY;
         this.speedX=settings.ball.speedX;
-        this.drawBall();
-        this.animate();
 
 /*
         this.ballBounce();
@@ -29,8 +27,12 @@ export class Ball{
     }
     drawBall(){
         this.ctx.fillStyle = 'white';
-        this.ctx.arc(this.ballX,this.ballY,this.radius,this.startAngle,this.endAngle);
+        this.ctx.arc(this.canvas.width/2,this.canvas.height/2,this.radius,this.startAngle,this.endAngle);
         this.ctx.fill();
+    }
+
+    animate(){
+
     }
 /*    ballBounce(){
         if (this.ballY+this.speedY <= 0 || this.ballY + this.speedY >= this.canvas.height){
@@ -52,11 +54,4 @@ export class Ball{
         }
     }*/
 
-    animate(){
-        this.ballX+=this.speedX;
-        window.requestAnimationFrame(()=>{
-            this.animate();
-        })
-        this.drawBall();
-    }
 }
