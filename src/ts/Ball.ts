@@ -32,7 +32,7 @@ export class Ball{
     }
 
     animate(){
-
+        this.ballX+=this.speedX;
     }
 /*    ballBounce(){
         if (this.ballY+this.speedY <= 0 || this.ballY + this.speedY >= this.canvas.height){
