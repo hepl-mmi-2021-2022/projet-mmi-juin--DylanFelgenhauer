@@ -14,6 +14,9 @@ export class PlayerOne {
 
     midlaneWidth:number;
 
+    scoreOne:any;
+    scoreTwo:any;
+
     constructor(){
         this.canvas = document.getElementById('my-canvas') as HTMLCanvasElement;
         this.ctx = this.canvas.getContext('2d');
@@ -25,10 +28,9 @@ export class PlayerOne {
         this.startAngle = settings.ball.startAngle;
         this.endAngle = settings.ball.endAngle;
         this.midlaneWidth = settings.midLane.width;
-        this.drawPlayerOne();
-        this.drawPlayerTwo();
-        this.drawBall();
-        this.drawMidlane()
+        this.scoreOne = 0;
+        this.scoreTwo = 0;
+        this.drawElements();
     }
     //Player One
     drawPlayerOne(){
@@ -57,5 +59,27 @@ export class PlayerOne {
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(this.x-(this.midlaneWidth*0.5),0,this.midlaneWidth,this.canvas.height);
         this.ctx.closePath();
+    }
+
+    //Score
+    displayScoreOne(){
+        this.ctx.font = "16px Arial";
+        this.ctx.fillStyle ="white";
+        this.ctx.fillText(this.scoreOne,this.canvas.width/2 -60,30);
+    }
+    displayScoreTwo(){
+        this.ctx.font = "16px Arial";
+        this.ctx.fillStyle ="white";
+        this.ctx.fillText(this.scoreTwo,this.canvas.width/2 +50,30);
+    }
+
+    drawElements(){
+        this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+        this.drawPlayerOne();
+        this.drawPlayerTwo();
+        this.drawBall();
+        this.drawMidlane();
+        this.displayScoreOne();
+        this.displayScoreTwo();
     }
 }
