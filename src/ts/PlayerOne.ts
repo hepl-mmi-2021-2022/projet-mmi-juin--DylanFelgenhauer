@@ -153,12 +153,12 @@ export class PlayerOne {
     }
     //Add Score
     addScore(){
-        if (this.ballY + this.ballspeedY <= settings.playerTwo.positions.y + settings.playerTwo.height &&
+        if ((this.ballY + this.ballspeedY <= settings.playerTwo.positions.y + settings.playerTwo.height &&
         this.ballX + this.ballSpeedX >= settings.playerTwo.positions.x &&
-        this.ballY + this.ballspeedY > settings.playerTwo.positions.y
+        this.ballY + this.ballspeedY > settings.playerTwo.positions.y)
         ||
-        this.ballY + this.ballspeedY > settings.playerOne.positions.y &&
-        this.ballX + this.ballSpeedX <= settings.playerOne.positions.x + settings.playerOne.width)
+            (this.ballY + this.ballspeedY > settings.playerOne.positions.y &&
+        this.ballX + this.ballSpeedX <= settings.playerOne.positions.x + settings.playerOne.width))
         {
             this.ballSpeedX = this.ballSpeedX * -1;
         }else if (this.ballX + this.ballSpeedX < settings.playerOne.positions.x){
