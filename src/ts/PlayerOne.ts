@@ -21,12 +21,21 @@ export class PlayerOne {
     scoreOne:any;
     scoreTwo:any;
 
+    posXPlayerOne:number;
+    posYPlayerOne:number;
+    posXPlayerTwo:number;
+    posYPlayerTwo:number;
+    gravity:number;
+
+
 
     constructor(){
         this.canvas = document.getElementById('my-canvas') as HTMLCanvasElement;
         this.ctx = this.canvas.getContext('2d');
         this.width = settings.player.width;
         this.height = settings.player.height;
+        this.gravity = settings.player.gravity;
+
         this.ballX= this.canvas.width/2;
         this.ballY= this.canvas.height/2;
         this.ballSpeedX=settings.ball.ballSpeedX;
@@ -34,10 +43,18 @@ export class PlayerOne {
         this.radius = settings.ball.radius;
         this.startAngle = settings.ball.startAngle;
         this.endAngle = settings.ball.endAngle;
+
+
         this.midlaneWidth = settings.midLane.width;
         this.midLaneX = this.canvas.width/2;
+
         this.scoreOne = 0;
         this.scoreTwo = 0;
+
+        this.posXPlayerOne = this.width;
+        this.posYPlayerOne = this.canvas.height/2-(this.height*0.5);
+        this.posXPlayerTwo = this.canvas.width-(this.width*2);
+        this.posYPlayerTwo = this.canvas.height/2-(this.height*0.5);
         this.drawElements();
         this.animation();
     }
@@ -45,16 +62,37 @@ export class PlayerOne {
     drawPlayerOne(){
         this.ctx.beginPath();
         this.ctx.fillStyle = "white";
-        this.ctx.fillRect(this.width, this.canvas.height/2-(this.height*0.5), this.width, this.height)
+        this.ctx.fillRect(settings.playerOne.positions.x, settings.playerOne.positions.y, this.width, this.height)
         this.ctx.closePath();
+        window.addEventListener("keydown", (e)=>{
+            if (e.key === "z" && settings.playerOne.positions.y >=0 ){
+                settings.playerOne.positions.y -= this.gravity;
+            }
+
+            if (e.key === "s" && settings.playerOne.positions.y + settings.playerOne.height <= this.canvas.height ){
+                settings.playerOne.positions.y += this.gravity;
+            }
+        })
+
     }
     //Player Two
     drawPlayerTwo(){
         this.ctx.beginPath();
         this.ctx.fillStyle = "white";
-        this.ctx.fillRect(this.canvas.width-(this.width*2), this.canvas.height/2-(this.height*0.5), this.width, this.height)
+        this.ctx.fillRect(settings.playerTwo.positions.x, settings.playerTwo.positions.y, this.width, this.height)
         this.ctx.closePath();
+        window.addEventListener("keydown", (e)=>{
+            if (e.key === "ArrowUp" && settings.playerTwo.positions.y >=0 ){
+                settings.playerTwo.positions.y -= this.gravity;
+            }
+
+            if (e.key === "ArrowDown" && settings.playerTwo.positions.y + settings.playerTwo.height <= this.canvas.height){
+                settings.playerTwo.positions.y += this.gravity;
+            }
+        })
+
     }
+
     //Ball
     drawBall(){
         this.ctx.beginPath();
@@ -64,7 +102,7 @@ export class PlayerOne {
         this.ctx.closePath();
     }
     //BallBounce
-    ballBounce(){
+    ballCollision(){
         //Collision Y
         if (this.ballY + this.ballspeedY <=0 || this.ballY + this.ballspeedY >= this.canvas.height){
             this.ballspeedY = -this.ballspeedY;
@@ -118,7 +156,7 @@ export class PlayerOne {
 
     animation(){
         this.drawElements();
-        this.ballBounce();
+        this.ballCollision();
         window.requestAnimationFrame(()=>{
             this.animation();
         })
