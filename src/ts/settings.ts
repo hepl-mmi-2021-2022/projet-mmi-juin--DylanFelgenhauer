@@ -24,7 +24,7 @@ export const settings ={
         radius : 5,
         startAngle : 0,
         endAngle: Math.PI*2,
-        ballSpeedX: 2,
+        ballSpeedX:2,
         ballSpeedY:2,
 
     },
