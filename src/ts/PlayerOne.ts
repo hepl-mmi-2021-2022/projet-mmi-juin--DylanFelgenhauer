@@ -152,6 +152,28 @@ export class PlayerOne {
         this.ctx.fillText(this.scoreTwo,this.canvas.width/2 +50,30);
     }
     //Add Score
+    addScore(){
+        if (this.ballY + this.ballspeedY <= settings.playerTwo.positions.y + settings.playerTwo.height &&
+        this.ballX + this.ballSpeedX >= settings.playerTwo.positions.x &&
+        this.ballY + this.ballspeedY > settings.playerTwo.positions.y
+        ||
+        this.ballY + this.ballspeedY > settings.playerOne.positions.y &&
+        this.ballX + this.ballSpeedX <= settings.playerOne.positions.x + settings.playerOne.width)
+        {
+            this.ballSpeedX = this.ballSpeedX * -1;
+        }else if (this.ballX + this.ballSpeedX < settings.playerOne.positions.x){
+            this.scoreTwo += 1;
+            this.ballSpeedX = this.ballSpeedX * -1;
+            this.ballX = this.canvas.width/2;
+            this.ballY += this.ballspeedY;
+        }else if ( this.ballX + this.ballSpeedX > settings.playerTwo.positions.x + settings.playerTwo.width){
+            this.scoreOne += 1;
+            this.ballSpeedX = this.ballSpeedX * -1;
+            this.ballX = this.canvas.width/2 + this.ballSpeedX;
+            this.ballY += this.ballspeedY;
+        }
+
+    }
 
 
     drawElements(){
@@ -168,6 +190,7 @@ export class PlayerOne {
         this.drawElements();
         this.ballCollision();
         this.mouvementsPlayer();
+        this.addScore();
         window.requestAnimationFrame(()=>{
             this.animation();
         })
