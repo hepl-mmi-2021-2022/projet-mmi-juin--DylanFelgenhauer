@@ -144,12 +144,12 @@ export class PlayerOne {
     displayScoreOne(){
         this.ctx.font = "16px Arial";
         this.ctx.fillStyle ="white";
-        this.ctx.fillText(this.scoreOne,this.canvas.width/2 -60,30);
+        this.ctx.fillText( "Joueur 1: "+ this.scoreOne,this.canvas.width/5,30);
     }
     displayScoreTwo(){
         this.ctx.font = "16px Arial";
         this.ctx.fillStyle ="white";
-        this.ctx.fillText(this.scoreTwo,this.canvas.width/2 +50,30);
+        this.ctx.fillText("Joueur 2: "+ this.scoreTwo,this.canvas.width/2*1.5-50,30);
     }
     //Add Score
     addScore(){
