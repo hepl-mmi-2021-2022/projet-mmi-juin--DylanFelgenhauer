@@ -6,31 +6,40 @@ export class PlayerOne {
     width: number;
     height: number;
 
-    x:number;
-    y:number;
+    ballX:number;
+    ballY:number;
+    ballSpeedX:number;
+    ballspeedY:number;
     radius: number;
     startAngle:number;
     endAngle:number;
 
     midlaneWidth:number;
+    midLaneX:number;
+    midlaneY:number;
 
     scoreOne:any;
     scoreTwo:any;
+
 
     constructor(){
         this.canvas = document.getElementById('my-canvas') as HTMLCanvasElement;
         this.ctx = this.canvas.getContext('2d');
         this.width = settings.player.width;
         this.height = settings.player.height;
-        this.x= this.canvas.width/2;
-        this.y= this.canvas.height/2;
+        this.ballX= this.canvas.width/2;
+        this.ballY= this.canvas.height/2;
+        this.ballSpeedX=settings.ball.ballSpeedX;
+        this.ballspeedY=settings.ball.ballSpeedY;
         this.radius = settings.ball.radius;
         this.startAngle = settings.ball.startAngle;
         this.endAngle = settings.ball.endAngle;
         this.midlaneWidth = settings.midLane.width;
+        this.midLaneX = this.canvas.width/2;
         this.scoreOne = 0;
         this.scoreTwo = 0;
         this.drawElements();
+        this.animation();
     }
     //Player One
     drawPlayerOne(){
@@ -50,14 +59,38 @@ export class PlayerOne {
     drawBall(){
         this.ctx.beginPath();
         this.ctx.fillStyle = "white";
-        this.ctx.arc(this.x,this.y,this.radius,this.startAngle,this.endAngle);
+        this.ctx.arc(this.ballX,this.ballY,this.radius,this.startAngle,this.endAngle);
         this.ctx.fill();
         this.ctx.closePath();
     }
+    //BallBounce
+    ballBounce(){
+        //Collision Y
+        if (this.ballY + this.ballspeedY <=0 || this.ballY + this.ballspeedY >= this.canvas.height){
+            this.ballspeedY = -this.ballspeedY;
+            this.ballY += this.ballspeedY;
+            this.ballX += this.ballSpeedX;
+        }else{
+            this.ballY += this.ballspeedY;
+            this.ballX += this.ballSpeedX;
+        }
+        //Collision X
+        if (this.ballX + this.ballSpeedX <=0 || this.ballX + this.ballSpeedX >= this.canvas.width){
+            this.ballSpeedX = -this.ballSpeedX;
+            this.ballY += this.ballspeedY;
+            this.ballX += this.ballSpeedX;
+        }else {
+            this.ballY += this.ballspeedY;
+            this.ballX += this.ballSpeedX;
+        }
+
+    }
+
+    //Midlane
     drawMidlane(){
         this.ctx.beginPath();
         this.ctx.fillStyle = "white";
-        this.ctx.fillRect(this.x-(this.midlaneWidth*0.5),0,this.midlaneWidth,this.canvas.height);
+        this.ctx.fillRect(this.midLaneX-(this.midlaneWidth*0.5),0,this.midlaneWidth,this.canvas.height);
         this.ctx.closePath();
     }
 
@@ -81,5 +114,13 @@ export class PlayerOne {
         this.drawMidlane();
         this.displayScoreOne();
         this.displayScoreTwo();
+    }
+
+    animation(){
+        this.drawElements();
+        this.ballBounce();
+        window.requestAnimationFrame(()=>{
+            this.animation();
+        })
     }
 }
