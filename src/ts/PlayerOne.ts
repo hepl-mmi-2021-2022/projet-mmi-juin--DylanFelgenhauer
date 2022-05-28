@@ -64,6 +64,21 @@ export class PlayerOne {
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(settings.playerOne.positions.x, settings.playerOne.positions.y, this.width, this.height)
         this.ctx.closePath();
+
+
+    }
+    //Player Two
+    drawPlayerTwo(){
+        this.ctx.beginPath();
+        this.ctx.fillStyle = "white";
+        this.ctx.fillRect(settings.playerTwo.positions.x, settings.playerTwo.positions.y, this.width, this.height)
+        this.ctx.closePath();
+
+
+    }
+
+    //Mouvements player
+    mouvementsPlayer(){
         window.addEventListener("keydown", (e)=>{
             if (e.key === "z" && settings.playerOne.positions.y >=0 ){
                 settings.playerOne.positions.y -= this.gravity;
@@ -74,13 +89,6 @@ export class PlayerOne {
             }
         })
 
-    }
-    //Player Two
-    drawPlayerTwo(){
-        this.ctx.beginPath();
-        this.ctx.fillStyle = "white";
-        this.ctx.fillRect(settings.playerTwo.positions.x, settings.playerTwo.positions.y, this.width, this.height)
-        this.ctx.closePath();
         window.addEventListener("keydown", (e)=>{
             if (e.key === "ArrowUp" && settings.playerTwo.positions.y >=0 ){
                 settings.playerTwo.positions.y -= this.gravity;
@@ -143,6 +151,8 @@ export class PlayerOne {
         this.ctx.fillStyle ="white";
         this.ctx.fillText(this.scoreTwo,this.canvas.width/2 +50,30);
     }
+    //Add Score
+
 
     drawElements(){
         this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
@@ -157,6 +167,7 @@ export class PlayerOne {
     animation(){
         this.drawElements();
         this.ballCollision();
+        this.mouvementsPlayer();
         window.requestAnimationFrame(()=>{
             this.animation();
         })
