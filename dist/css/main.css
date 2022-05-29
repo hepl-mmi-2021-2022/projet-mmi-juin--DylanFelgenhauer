@@ -12,6 +12,18 @@ body {
   text-align: center;
 }
 
+h1 {
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+.winner {
+  color: red;
+}
+
 .canvas {
   background-color: black;
 }

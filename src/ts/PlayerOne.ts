@@ -151,6 +151,7 @@ export class PlayerOne {
         this.ctx.fillStyle ="white";
         this.ctx.fillText("Joueur 2: "+ this.scoreTwo,this.canvas.width/2*1.5-50,30);
     }
+
     //Add Score
     addScore(){
         if ((this.ballY + this.ballspeedY <= settings.playerTwo.positions.y + settings.playerTwo.height &&
