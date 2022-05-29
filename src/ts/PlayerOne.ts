@@ -92,6 +92,7 @@ export class PlayerOne {
         window.addEventListener("keydown", (e)=>{
             if (e.key === "ArrowUp" && settings.playerTwo.positions.y >=0 ){
                 settings.playerTwo.positions.y -= this.gravity;
+                console.log(this.gravity)
             }
 
             if (e.key === "ArrowDown" && settings.playerTwo.positions.y + settings.playerTwo.height <= this.canvas.height){

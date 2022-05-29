@@ -25,6 +25,7 @@ export const settings ={
         startAngle : 0,
         endAngle: Math.PI*2,
         ballSpeedX:2,
+        maxBallSpeedX:5,
         ballSpeedY:2,
 
     },

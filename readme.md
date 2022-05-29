@@ -16,11 +16,11 @@ Allez vous choisir de ridiculiser un ami ? Ou alors vous entrainer contre l'ordi
 - [x] Creer le fond 
 - [x] Créer le joueur 1
 - [x] Créer le joueur 2
-- [ ] Créer la balle
-- [ ] Mouvement des joueurs
-- [ ] Systéme de 2 joueurs
+- [x] Créer la balle
+- [x] Mouvement des joueurs
+- [x] Systéme de 2 joueurs
 - [ ] Système contre l'ordinateur
-- [ ] Système de points
+- [x] Système de points
 - [ ] VICTOIRE ! 
 - [ ] Défaite...
 - [ ] Changement en sprite
