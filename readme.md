@@ -21,8 +21,7 @@ Allez vous choisir de ridiculiser un ami ? Ou alors vous entrainer contre l'ordi
 - [x] Systéme de 2 joueurs
 - [ ] Système contre l'ordinateur
 - [x] Système de points
-- [ ] VICTOIRE ! 
-- [ ] Défaite...
+- [x] VICTOIRE ! 
 - [ ] Changement en sprite
 - [ ] Niveau de difficulté ?
 

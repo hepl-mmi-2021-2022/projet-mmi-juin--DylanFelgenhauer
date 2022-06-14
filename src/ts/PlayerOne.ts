@@ -28,6 +28,8 @@ export class PlayerOne {
     posYPlayerTwo:number;
     gravity:number;
 
+    gameIsStarted:boolean;
+
 
 
     constructor(){
@@ -57,6 +59,8 @@ export class PlayerOne {
         this.posYPlayerOne = this.canvas.height/2-(this.height*0.5);
         this.posXPlayerTwo = this.canvas.width-(this.width*2);
         this.posYPlayerTwo = this.canvas.height/2-(this.height*0.5);
+
+        this.gameIsStarted = true;
         this.drawElements();
         this.animation();
     }
@@ -178,6 +182,7 @@ export class PlayerOne {
         }
 
     }
+
     victory(){
         if(this.scoreOne === this.maxScore){
             alert("Victoire du joueur 1 !");
@@ -204,12 +209,14 @@ export class PlayerOne {
 
     animation(){
         this.drawElements();
-        this.ballCollision();
-        this.mouvementsPlayer();
-        this.addScore();
-        this.victory();
-        window.requestAnimationFrame(()=>{
-            this.animation();
-        })
+        if (this.gameIsStarted === true){
+            this.ballCollision();
+            this.mouvementsPlayer();
+            this.addScore();
+            this.victory();
+            window.requestAnimationFrame(()=>{
+                this.animation();
+            })
+        }
     }
 }
