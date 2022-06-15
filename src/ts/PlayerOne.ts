@@ -182,7 +182,7 @@ export class PlayerOne {
         }
 
     }
-
+//score
     victory(){
         if(this.scoreOne === this.maxScore){
             alert("Victoire du joueur 1 !");
